@@ -2,11 +2,7 @@
 //THE TEST SERVER IS RUNNING ON LOCALHOST:3000//
 ////////////////////////////////////////////////
 
-// const { default: axios } = require("axios")
 
-// const { default: axios } = require("axios")
-
-// const { default: axios } = require("axios")
 
 // PROBLEM 1
 /*
@@ -188,11 +184,11 @@ document.getElementById('query-button').addEventListener('click', getQuery)
 
     1: Send no queries on the URL -- what happened? 
 
-    //it says an empty query was sent
+    // it says an empty query was sent
 
     2: Send more than 1 query on the URL -- what happened? 
 
-    //you sent more than 1 query
+    // it says you sent more than 1 query
 */
 
 // Edit code in Problem 8
@@ -223,3 +219,21 @@ document.getElementById('query-button').addEventListener('click', getQuery)
 */
 
 // CODE HERE 
+
+function createFood(event) {
+    event.preventDefault()
+    const foodInput = document.getElementById('test')
+    let body = {
+        newFood: foodInput.value
+    }
+
+    axios.post("http://localhost:3000/food", body)
+        .then(function(res) {
+            console.log(res.data)
+            const fd = document.createElement("span")
+            fd.textContent = foodInput.value
+            document.body.appendChild(fd)
+        })
+}
+
+document.querySelector('form').addEventListener('submit', createFood)
