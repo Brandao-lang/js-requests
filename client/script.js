@@ -96,7 +96,12 @@ const ohMy = () => {
     // YOUR CODE HERE
     axios.get('http://localhost:3000/animals')
         .then(function(res) {
-            console.log(res.data)
+            for(let i = 0; i < res.data.length; i++) {
+                const text = document.createElement('p')
+                text.textContent = res.data[i]
+                document.body.appendChild(text)
+
+            }
         })
 }
 
@@ -121,7 +126,8 @@ const repeatMyParam = () => {
     axios.get(`http://localhost:3000/repeat/animals`)
         .then(function(res) {
             console.log(res.data)
-            document.getElementById('repeat-text').textContent = res.data
+            document.getElementById('repeat-text')
+            
            
         })
     }
@@ -182,7 +188,11 @@ document.getElementById('query-button').addEventListener('click', getQuery)
 
     1: Send no queries on the URL -- what happened? 
 
+    //it says an empty query was sent
+
     2: Send more than 1 query on the URL -- what happened? 
+
+    //you sent more than 1 query
 */
 
 // Edit code in Problem 8
